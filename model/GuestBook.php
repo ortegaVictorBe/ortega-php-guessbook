@@ -36,7 +36,7 @@ class GuestBook{
             $content=$oneMessage->getContent();
             $author=$oneMessage->getAuthor()->getName();
             $email=$oneMessage->getAuthor()->getEmail();            
-            $datePost=date("l d/m/Y",$oneMessage->getDatePost());
+            $datePost=$oneMessage->getDatePost();
             
           
             $messagesToShow=$messagesToShow."<div class='card text-white bg-secondary mb-3' >
