@@ -40,7 +40,7 @@ class GuestBook{
             
           
             $messagesToShow=$messagesToShow."<div class='card text-white bg-secondary mb-3' >
-            <div class='card-header'>$author - $datePost</div>
+            <div class='card-header'>$author ($email) - $datePost</div>
             <div class='card-body'>
                 <h4 class='card-title'>$title</h4>
                 <p class='card-text'>$content</p>
