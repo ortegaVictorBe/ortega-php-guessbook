@@ -35,12 +35,14 @@ class GuestBook{
             $title=$oneMessage->getTitle();
             $content=$oneMessage->getContent();
             $author=$oneMessage->getAuthor()->getName();
-            $email=$oneMessage->getAuthor()->getEmail();
+            $email=$oneMessage->getAuthor()->getEmail();            
+            $datePost=date("l d/m/Y",$oneMessage->getDatePost());
+            
           
-            $messagesToShow=$messagesToShow."<div class='card text-white bg-info mb-3' >
-            <div class='card-header'>$title</div>
+            $messagesToShow=$messagesToShow."<div class='card text-white bg-secondary mb-3' >
+            <div class='card-header'>$author - $datePost</div>
             <div class='card-body'>
-                <h4 class='card-title'>$author</h4>
+                <h4 class='card-title'>$title</h4>
                 <p class='card-text'>$content</p>
             </div>
             </div>";
