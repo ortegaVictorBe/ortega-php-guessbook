@@ -10,16 +10,16 @@ class GuestBook{
     }
  
     public function loadPosts(){
-    //Loading file
-    $myJson=file_get_contents(self::FILE_NAME);
-    $this->messages=unserialize(json_decode($myJson));    
+        //Loading file
+        $myJson=file_get_contents(self::FILE_NAME);
+        $this->messages=unserialize(json_decode($myJson));    
     }
 
     public function savePost($post){
    //Saving the posts
-   array_push($this->messages,$post);
-   $myJson=json_encode(serialize($this->messages));
-   file_put_contents(self::FILE_NAME,$myJson);         
+        array_push($this->messages,$post);
+        $myJson=json_encode(serialize($this->messages));
+        file_put_contents(self::FILE_NAME,$myJson);         
 
     }
     /**
@@ -40,9 +40,9 @@ class GuestBook{
             
           
             $messagesToShow=$messagesToShow."<div class='card text-white bg-secondary mb-3' >
-            <div class='card-header'>$author ($email) - $datePost</div>
+            <div class='card-header'><span><img src='./img/user_p.png'></span><span> $author ($email) - $datePost</span></div>
             <div class='card-body'>
-                <h4 class='card-title'>$title</h4>
+                <h4 class='card-title'><span><img src='./img/chat_p.png'></span>  $title</h4>
                 <p class='card-text'>$content</p>
             </div>
             </div>";

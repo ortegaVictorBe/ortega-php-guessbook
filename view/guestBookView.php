@@ -45,6 +45,11 @@
                 </div>
                 <div class="form-group col-md-8">
                     <div class="jumbotron mt-3">
+                        <fieldset class="text-right">
+                            <label for="howManyPostView">post showed ..</label>
+                            <input type="number" name="howManyPostView" id="howManyPostView" min="0" max="20" step="5"
+                                value="20">
+                        </fieldset>
                         <? echo $guestBook->getMessages(); ?>
                     </div>
                 </div>
