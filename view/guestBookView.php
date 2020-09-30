@@ -39,7 +39,8 @@
                             <textarea class="form-control" id="content" name="content" rows="5"></textarea>
                         </fieldset>
                         <fieldset>
-                            <button type="submit" class="btn btn-primary" name="send">Say anything ..</button>
+                            <button type="submit" class="btn btn-primary form-control mt-2" name="send">Say anything
+                                ..</button>
                         </fieldset>
                     </div>
                 </div>
