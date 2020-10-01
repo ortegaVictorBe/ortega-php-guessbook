@@ -2,18 +2,14 @@
 
 class GuestBook{
     private $conn;
-    private $messages=[];
-    const FILE_NAME = 'model/data/posts.json';
+    private $messages=[];    
     
     public function __construct(){
         $this->conn=new ConnectDB_MySql();
         $this->loadPosts();
     }
  
-    public function loadPosts(){
-        // //Loading file
-        // $myJson=file_get_contents(self::FILE_NAME);
-        // $this->messages=unserialize(json_decode($myJson));    
+    public function loadPosts(){        
 
         //Selecting from the DataBase
         $handle = $this->conn->getPdo()->prepare('SELECT message FROM post');         
