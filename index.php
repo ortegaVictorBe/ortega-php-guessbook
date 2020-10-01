@@ -9,43 +9,49 @@ require "model/GuestBook.php";
 
 
 $guestBook = new GuestBook();
-$errMessage="";
+$userMessage="";
 
 
 if ($_SERVER["REQUEST_METHOD"]=="POST" ){
-    // validating
+    // Validating DataEntry
+    $errMessage="";
     //validate author
-    if (empty($_POST["name"]))
-    {  $errMessage=$errMessage.", Author is empty";
-    }else{
-    $name=cleanInput($_POST["name"]); 
-    }
+    $name=validateAuthor($errMessage);
+
+    // if (empty($_POST["name"]))
+    // {  $errMessage=$errMessage.", Author is empty";
+    // }else{
+    // $name=cleanInput($_POST["name"]); 
+    // }
 
     //Validate e-mail 
-    if (empty($_POST["email"])){
-        $errMessage=$errMessage."e-mail is empty !";
-    }else{
-     $email=cleanInput($_POST["email"]);
-     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $errMessage=$errMessage."Invalidate email !";
-     } 
-    }
+    $email=validateEmail($errMessage);
+    // if (empty($_POST["email"])){
+    //     $errMessage=$errMessage."e-mail is empty !";
+    // }else{
+    //  $email=cleanInput($_POST["email"]);
+    //  if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    //     $errMessage=$errMessage."Invalidate email !";
+    //  } 
+    // }
 
     //Validating title
-    if (empty($_POST["title"])){
-        $errMessage=$errMessage.", Title is empty";
-   }else{
-    $title=cleanInput($_POST["title"]); 
-   }
+    $title=validateTitle($errMessage);
+//     if (empty($_POST["title"])){
+//         $errMessage=$errMessage.", Title is empty";
+//    }else{
+//     $title=cleanInput($_POST["title"]); 
+//    }
     
    //Validate content
-   if (empty($_POST["content"])){
-    $errMessage=$errMessage.", Content is empty";
+   $content=validateContent($errMessage);
+//    if (empty($_POST["content"])){
+//     $errMessage=$errMessage.", Content is empty";
 
-    }else{
+//     }else{
 
-     $content=cleanInput($_POST["content"]); 
-    }
+//      $content=cleanInput($_POST["content"]); 
+//     }
 
     if (!empty($errMessage)){
         $errMessage="Please check and fix this issues :) : ".$errMessage;
@@ -66,13 +72,60 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" ){
     
 }
 
-
+//function CleanInput -  Validate the input characters
 function cleanInput($data){
     $data=trim($data);
     $data=stripslashes($data);
     $data=htmlspecialchars($data);
     return $data;
 };
+
+//Function validate Author (User) -  Post'Owner
+function validateAuthor(&$errMessage){
+    if (empty($_POST["name"]))
+    {  $errMessage=$errMessage.", Author is empty";
+    }else{
+    return cleanInput($_POST["name"]); 
+    }
+
+}
+
+//function Validate email of the author(user)
+function validateEmail(&$errMessage){
+    if (empty($_POST["email"])){
+        $errMessage=$errMessage."e-mail is empty !";
+    }else{
+     $email=cleanInput($_POST["email"]);
+     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $errMessage=$errMessage."Invalidate email !";
+     } 
+     return $email;
+    }
+
+}
+
+//function Validate Title of post
+function validateTitle(&$errMessage){
+    if (empty($_POST["title"])){
+        $errMessage=$errMessage.", Title is empty";
+   }else{
+     return cleanInput($_POST["title"]); 
+   }
+    
+}
+
+//function Validate the content of post
+function validateContent(&$errMessage){
+    if (empty($_POST["content"])){
+        $errMessage=$errMessage.", Content is empty";
+    
+        }else{
+    
+         return cleanInput($_POST["content"]); 
+        }    
+}
+
+
 
  require 'view/guestBookView.php';
 ?>

@@ -22,6 +22,7 @@ class GuestBook{
         file_put_contents(self::FILE_NAME,$myJson);         
 
     }
+    
     /**
      * Get the value of messages
      */ 
