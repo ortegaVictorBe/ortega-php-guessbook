@@ -23,11 +23,8 @@ class GuestBook{
     }
 
     public function savePost($post){
-        //Saving the posts
-        // array_push($this->messages,$post);
-        // $myJson=json_encode(serialize($this->messages));
-        // file_put_contents(self::FILE_NAME,$myJson);
-        
+        //Saving the posts        
+        array_push($this->messages,$post);
         //INnsert Into Database                 
         $serializedPost=json_encode(serialize($post));
         $handle = $this->conn->getPdo()->prepare("INSERT INTO post (message) VALUES(:m)");         
