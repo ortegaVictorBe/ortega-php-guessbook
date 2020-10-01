@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 //require "model/autoload.php";
+require "model/ConnectDB.php";
 require "model/Subject.php";
 require "model/Message.php";
 require "model/Visitor.php";
@@ -9,11 +10,12 @@ require "model/GuestBook.php";
 
 
 $guestBook = new GuestBook();
-$errMessage="";
+$userMessage="";
 
 
 if ($_SERVER["REQUEST_METHOD"]=="POST" ){
     // validating
+    $errMessage="";
     //validate author
     if (empty($_POST["name"]))
     {  $errMessage=$errMessage.", Author is empty";

@@ -9,7 +9,7 @@ class Message{
       $this->title=$title;
       $this->content=$content;
       $this->author=$author;
-      $this->datePost=date(" l d/m/Y"); }
+      $this->datePost=date(" l d/m/Y h:i a"); }
 
 
     /**

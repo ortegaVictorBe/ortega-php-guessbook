@@ -1,25 +1,43 @@
 <?php
 
 class GuestBook{
-    private $post;
+    private $conn;
     private $messages=[];
     const FILE_NAME = 'model/data/posts.json';
     
     public function __construct(){
+        $this->conn=new ConnectDB_MySql();
         $this->loadPosts();
     }
  
     public function loadPosts(){
-        //Loading file
-        $myJson=file_get_contents(self::FILE_NAME);
-        $this->messages=unserialize(json_decode($myJson));    
+        // //Loading file
+        // $myJson=file_get_contents(self::FILE_NAME);
+        // $this->messages=unserialize(json_decode($myJson));    
+
+        //Selecting from the DataBase
+        $handle = $this->conn->getPdo()->prepare('SELECT message FROM post');         
+        $handle->execute();
+        $serializedPosts=$handle->fetchAll();
+        foreach ($serializedPosts as $key=>$onePost) {
+            $oneMessage=$onePost["message"]; 
+            array_push($this->messages,unserialize(json_decode($oneMessage)));
+        } 
+        
     }
 
     public function savePost($post){
-   //Saving the posts
-        array_push($this->messages,$post);
-        $myJson=json_encode(serialize($this->messages));
-        file_put_contents(self::FILE_NAME,$myJson);         
+        //Saving the posts
+        // array_push($this->messages,$post);
+        // $myJson=json_encode(serialize($this->messages));
+        // file_put_contents(self::FILE_NAME,$myJson);
+        
+        //INnsert Into Database                 
+        $serializedPost=json_encode(serialize($post));
+        $handle = $this->conn->getPdo()->prepare("INSERT INTO post (message) VALUES(:m)");         
+        $handle->bindValue(':m', $serializedPost);
+        $handle->execute();
+
 
     }
     /**

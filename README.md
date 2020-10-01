@@ -1,8 +1,8 @@
-# PHP - Guestbook - BeCode :clipboard:
+# PHP - My Sql - Guestbook - BeCode :clipboard:
 
 ## Brief :clipboard:
 
-We have to build a Guestbook with PHP
+This new version is based on [Original Version](https://github.com/ortegaVictorBe/ortega-php-guessbook.git) , but using MySql :dolphin:.
 
 ---
 
@@ -10,21 +10,14 @@ We have to build a Guestbook with PHP
 
 ---
 
-- Posts must have the following attributes:
-- Title
-- Date
-- Content
-- Author name
-- Use at least 2 classes: Post & PostLoader
-- The messages are sorted from new (top) to old (bottom).
-- Make sure the script can handle site defacement attacks: use htmlspecialchars()
-- Only show the latest 20 posts.
+We've touched the basics of PHP, and now it's time to learn about its partner in crime, let's look at MySQL/MariaDB and what it does / how it works.
+After some theory from your coach, you will dive in and do a small exercise to discover your new super powers!.
 
 ---
 
 ## To Do :construction:
 
-- Learn about the OOP in PHP
+- Learn about the MySql :dolphin:
 
 - Build a beautiful guestbook.
 
@@ -39,9 +32,10 @@ Building with
 - Php
 - Bootstrap
 - Google
-- Clases in PHP
+- OOP in PHP
 - Apache 2.4
 - XDebug Extension.
+- MySql
 
 ---
 
