@@ -10,6 +10,7 @@ require "model/GuestBook.php";
 
 $guestBook = new GuestBook();
 $userMessage="";
+$howManyPostShow=20;
 
 
 if ($_SERVER["REQUEST_METHOD"]=="POST" ){
@@ -37,9 +38,14 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" ){
         $author=new Visitor($name,$email);
         $newPost= new Message($author,$title,$_POST["content"]);
         $guestBook->savePost($newPost); 
-      }    
+      }   
+      
+      $howManyPostShow=$_POST["howManyPostView"];
 }
 
+//-----------------------------------------------------
+//-------------------FUNCTIONS ------------------------
+//-----------------------------------------------------
 //function CleanInput -  Validate the input characters
 function cleanInput($data){
     $data=trim($data);
@@ -93,7 +99,7 @@ function validateContent(&$errMessage){
         }    
 }
 
-
-
+//Drawing the page
  require 'view/guestBookView.php';
+ unset($guestBook);
 ?>

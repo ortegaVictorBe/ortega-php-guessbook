@@ -49,9 +49,9 @@
                         <fieldset class="text-right">
                             <label for="howManyPostView">post showed ..</label>
                             <input type="number" name="howManyPostView" id="howManyPostView" min="0" max="20" step="5"
-                                value="20">
+                                value=<? echo $howManyPostShow?>>
                         </fieldset>
-                        <? echo $guestBook->getMessages(); ?>
+                        <? echo $guestBook->getMessages($howManyPostShow); ?>
                     </div>
                 </div>
 

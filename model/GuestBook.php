@@ -26,12 +26,12 @@ class GuestBook{
     /**
      * Get the value of messages
      */ 
-    public function getMessages()
+    public function getMessages($howManyPostShow)
     {
         $messagesToShow="";
         $messageOrdered=array_reverse($this->messages);
       foreach ($messageOrdered as $index => $oneMessage) {
-         if ($index < 20)
+         if ($index < $howManyPostShow)
          {  
             $title=$oneMessage->getTitle();
             $content=$oneMessage->getContent();
